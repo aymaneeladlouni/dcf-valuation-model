@@ -82,5 +82,5 @@ Modifie ces valeurs pour valoriser n'importe quelle entreprise.
 
 ---
 
-*Projet réalisé dans le cadre de mon parcours en Finance (M2, ENCG Fès).*
+*Projet réalisé dans le cadre de mon parcours en Finance (M1, ENCG Fès).*
 
