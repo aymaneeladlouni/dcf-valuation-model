@@ -1,8 +1,8 @@
-"""
-================================================================================
+
+
  MODÈLE DE VALORISATION DCF (Discounted Cash Flow)
  Auteur : Aymane El Adlouni
---------------------------------------------------------------------------------
+----------------------------------------------------------------------\\
  Ce programme estime la VALEUR INTRINSÈQUE d'une entreprise à partir de ses
  flux de trésorerie futurs, actualisés à leur valeur d'aujourd'hui.
 
@@ -15,16 +15,15 @@
    3. Calculer la valeur terminale (tout ce qui vient après l'année N)
    4. Additionner le tout = Valeur d'Entreprise (Enterprise Value)
    5. En déduire la valeur des capitaux propres et le prix par action
-================================================================================
-"""
+
 
 import numpy as np
 import matplotlib.pyplot as plt
 
 
-# ==============================================================================
+
 # 1. HYPOTHÈSES DU MODÈLE  (les seules choses à modifier pour tester)
-# ==============================================================================
+
 # Toutes les valeurs monétaires sont en millions (peu importe la devise).
 
 fcf_initial       = 1000.0   # Free Cash Flow de la dernière année connue
@@ -37,9 +36,9 @@ dette_nette       = 1500.0   # Dette - trésorerie (pour passer de EV à Equity 
 nombre_actions    = 500.0    # Nombre d'actions en circulation (millions)
 
 
-# ==============================================================================
+
 # 2. PROJECTION DES FLUX DE TRÉSORERIE FUTURS
-# ==============================================================================
+
 def projeter_fcf(fcf_base, taux_croissance, n_annees):
     """
     Projette le Free Cash Flow année par année.
@@ -54,9 +53,9 @@ def projeter_fcf(fcf_base, taux_croissance, n_annees):
     return flux
 
 
-# ==============================================================================
+
 # 3. ACTUALISATION : ramener un flux futur à sa valeur d'aujourd'hui
-# ==============================================================================
+
 def actualiser(flux_futur, taux, annee):
     """
     Valeur présente = flux_futur / (1 + taux) ^ annee
@@ -65,9 +64,9 @@ def actualiser(flux_futur, taux, annee):
     return flux_futur / ((1 + taux) ** annee)
 
 
-# ==============================================================================
+
 # 4. VALEUR TERMINALE (méthode de Gordon-Shapiro)
-# ==============================================================================
+
 def valeur_terminale(dernier_fcf, taux_actualisation, croissance_long_terme):
     """
     Estime la valeur de TOUS les flux au-delà de l'année N, en supposant
@@ -81,9 +80,9 @@ def valeur_terminale(dernier_fcf, taux_actualisation, croissance_long_terme):
     return fcf_apres / (taux_actualisation - croissance_long_terme)
 
 
-# ==============================================================================
+
 # 5. CALCUL PRINCIPAL DU DCF
-# ==============================================================================
+
 def calculer_dcf():
     # --- Étape 1 : projeter les FCF ---
     flux_projetes = projeter_fcf(fcf_initial, croissance_fcf, annees_projection)
@@ -131,9 +130,9 @@ def calculer_dcf():
     return flux_projetes, flux_actualises, prix_par_action
 
 
-# ==============================================================================
+
 # 6. ANALYSE DE SENSIBILITÉ : et si le WACC ou la croissance changeaient ?
-# ==============================================================================
+
 def analyse_sensibilite():
     """
     Recalcule le prix par action pour différentes combinaisons de WACC et
@@ -166,9 +165,9 @@ def analyse_sensibilite():
     print("-" * 60)
 
 
-# ==============================================================================
+
 # 7. GRAPHIQUE : FCF projeté vs FCF actualisé
-# ==============================================================================
+
 def tracer_graphique(flux_projetes, flux_actualises):
     annees = list(range(1, annees_projection + 1))
     largeur = 0.35
@@ -189,9 +188,9 @@ def tracer_graphique(flux_projetes, flux_actualises):
     print("\nGraphique enregistré : dcf_graphique.png")
 
 
-# ==============================================================================
+
 # POINT D'ENTRÉE DU PROGRAMME
-# ==============================================================================
+
 if __name__ == "__main__":
     flux_proj, flux_act, prix = calculer_dcf()
     analyse_sensibilite()
