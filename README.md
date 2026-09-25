@@ -1,14 +1,14 @@
- Modèle de Valorisation DCF (Discounted Cash Flow)
+# Modèle de Valorisation DCF (Discounted Cash Flow)
 
 Un modèle Python complet estimant la **valeur intrinsèque d'une entreprise** à partir de ses flux de trésorerie futurs actualisés, avec analyse de sensibilité et visualisation.
 
 ---
 
- Objectif
+## Objectif
 
 Le DCF (Discounted Cash Flow) est la méthode de valorisation de référence en corporate finance et private equity. Ce projet implémente le modèle complet, de la projection des flux jusqu'au prix par action, en appliquant le principe de la **valeur temps de l'argent** : un flux futur vaut moins qu'un flux présent, on l'actualise donc au WACC.
 
-  Ce que fait le modèle
+## Ce que fait le modèle
 
 1. **Projection du Free Cash Flow** sur un horizon explicite (5 ans par défaut)
 2. **Actualisation** de chaque flux à sa valeur présente via le WACC
@@ -18,7 +18,7 @@ Le DCF (Discounted Cash Flow) est la méthode de valorisation de référence en 
 6. **Analyse de sensibilité** : matrice du prix par action selon le WACC et la croissance perpétuelle
 7. **Visualisation** : graphique comparant FCF projeté et FCF actualisé
 
- Exemple de résultat
+## Exemple de résultat
 
 ```
 VALEUR D'ENTREPRISE (EV)                 17 202,4
@@ -39,13 +39,13 @@ PRIX PAR ACTION                             31,40
 
 ![Graphique DCF](dcf_graphique.png)
 
- Technologies
+## Technologies
 
 - **Python 3**
 - **NumPy** — calculs numériques
 - **Matplotlib** — visualisation
 
- Comment lancer
+## Comment lancer
 
 ```bash
 # Installer les dépendances
@@ -57,7 +57,7 @@ python dcf_valuation.py
 
 Le programme affiche les résultats en console et génère `dcf_graphique.png`.
 
-🔧 Personnalisation
+## Personnalisation
 
 Toutes les hypothèses sont regroupées en haut du fichier `dcf_valuation.py` :
 
@@ -72,7 +72,7 @@ nombre_actions    = 500.0    # Actions en circulation
 
 Modifie ces valeurs pour valoriser n'importe quelle entreprise.
 
- Concepts financiers appliqués
+## Concepts financiers appliqués
 
 - Valeur temps de l'argent et actualisation
 - WACC comme taux d'actualisation
